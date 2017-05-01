@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<script  language="javascript"   > 
+
+$liste = document.getElementById("liste");
+$prenom = document.getElementById("prenom");
+$nom = document.getElementById("nom");
+$numero = document.getElementById("numero");
+ var ajouter = document.getElementById("ajouter");
+
+contacts = [{
+    prenom: "Julien",
+    nom: "Grillot",
+    numero: "0123456789"
+}, {
+    prenom: "John",
+    nom: "Smith",
+    numero: "0123456789"
+}];
+
+function texteContact(contact) {
+    return contact.prenom + " " + contact.nom + " (" + contact.numero + ")";
+}
+
+function afficherListe() {
+    elements = "";
+    for (i = 0; i < contacts.length; i++) {
+        elements += "<li>" + texteContact(contacts[i]) + "</li>";
+    }
+    $liste.innerHTML = elements;
+}
+function initElement()
+{
+var	liste = document.getElementById("liste");
+var	prenom = document.getElementById("prenom");
+var	nom = document.getElementById("nom");
+var numero = document.getElementById("numero");
+var ajouter = document.getElementById("ajouter");
+//var p = document.getElementById("ajouter");
+  // NOTE: showAlert(); ou showAlert(param); NE fonctionne PAS ici.
+  // Il faut fournir une valeur de type function (nom de fonction déclaré ailleurs ou declaration en ligne de fonction).
+  ajouter.onclick = ajouter;
+  
+};
+function ajouter() {
+    contacts.push({
+        prenom: $prenom.value,
+        nom: $nom.value,
+        numero: $numero.value
+    });
+    afficherListe();
+}
+
+ajouter.onclick = ajouter;
+afficherListe();
+</script>
+
+<style type="text/css">
+#liste {
+border: solid blue 2px;
+width: 500px;
+height: 500px;
+}
+</style>
+</head>
+
+<body onload="initElement(); >
+<h1>semaine9</h1>
+<input id="prenom" placeholder="Prénom" />
+<input id="nom" placeholder="Nom" />
+<input id="numero" placeholder="Numéro" />
+<button id="ajouter">Ajouter</button>
+
+<div>Affichage
+<ul id="liste"></ul>
+</div>
+
+</body>
+</html>
